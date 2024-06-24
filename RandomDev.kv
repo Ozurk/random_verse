@@ -1,0 +1,24 @@
+#:kivy 2.3.0
+
+<RandomDev>:
+    FloatLayout:
+        TopLabel:
+            pos_hint: {'top': 1}
+        StartButton:
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+<StartButton>:
+    Button:
+        text: "Start"
+        color: (0, 1, 1, 1)
+        background_color: (0, 1, 0, 1)
+        size_hint: None, None
+        size: 500, 70
+
+<TopLabel>:
+    Label:
+        text: "This is a Label"
+        color: (0, 0, 1, 1)
+        size_hint: None, None
+        size: self.texture_size
+        pos_hint: {'top': 1, 'center_x': 0.5}
