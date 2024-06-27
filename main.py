@@ -3,25 +3,17 @@ from kivy.uix.widget import Widget
 from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.uix.floatlayout import FloatLayout
-from kivy.uix.scatter import Scatter
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.gridlayout import GridLayout
 
 
-class RandomDev(Widget):
-    pass
-
-
-class TopLabel(Widget):
-    pass
-
-
-class StartButton(Widget):
+class RandomDev(BoxLayout):
     pass
 
 
 class RandomDevApp(App):
     def build(self):
-        main_gui = RandomDev()
-        return main_gui
+        return RandomDev()
 
 
 if __name__ == '__main__':
