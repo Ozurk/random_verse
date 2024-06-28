@@ -4,32 +4,37 @@
 <RandomDev>:
     orientation: "vertical"
     padding: dp(20), dp(10)
+    canvas:
+        Color:
+            rgba: 1, 0, 1, 1
+
     Label:
         text: "Random_Devotion_Time"
         text_size: root.width, None
-        font_size: 30
+        font_size: 60
         halign: 'center'
         size: self.texture_size
         size_hint_y: .2
         padding: 10, 5
         id: banner
 
-    Button:
-        text: "Get New"
+    Label:
+        text: 'None'
         pos_hint: {'center': 1}
-        background_color: (1, 0, 0, 1)
-        on_press: banner.color=[random.random() for i in range(3)] + [1]
+
+
 
 
     BoxLayout:
         padding: dp(30), dp(100)
-        orientation: "horizontal"
-        Button:
-            text: "Another\nButton!"
-            background_color: (0, 0, 1, 1)
-            size: 100, 500
+        orientation: "vertical"
         Label:
             text: "Here is some text"
+        Button:
+            text: "Another\nButton!"
+            background_color: (0, .5, 1, 1)
+            size: 100, 500
+
 
 
 
