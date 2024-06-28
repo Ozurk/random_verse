@@ -11,7 +11,7 @@ class MyPaintWidget(Widget):
         color = (random(), 1, 1)
         with self.canvas:
             Color(*color, mode='hsv')
-            d = 30.
+            d = 10.
             Ellipse(pos=(touch.x - d / 2, touch.y - d / 2), size=(d, d))
             touch.ud['line'] = Line(points=(touch.x, touch.y))
 

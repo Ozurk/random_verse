@@ -5,6 +5,7 @@ from kivy.uix.label import Label
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
+from kivy.uix.scatter import Scatter
 
 
 class RandomDev(BoxLayout):
