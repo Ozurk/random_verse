@@ -3,6 +3,7 @@
 
 <RandomDev>:
     orientation: "vertical"
+    padding: dp(20), dp(10)
     Label:
         text: "Random_Devotion_Time"
         text_size: root.width, None
@@ -10,21 +11,25 @@
         halign: 'center'
         size: self.texture_size
         size_hint_y: .2
-
+        padding: 10, 5
 
     Button:
-        text: "Get New Devotion"
+        text: "Get New"
         pos_hint: {'center': 1}
         background_color: (1, 0, 0, 1)
 
+
     BoxLayout:
+        padding: dp(30), dp(100)
         orientation: "horizontal"
         Button:
-            text: "Hello Morgan!"
+            text: "Another\nButton!"
             background_color: (0, 0, 1, 1)
-        Button:
-            text: "Hello Hunter"
-       
+            size: 100, 500
+        Label:
+            text: "Here is some text"
+
+
 
 
 
