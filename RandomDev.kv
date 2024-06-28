@@ -1,5 +1,5 @@
 #:kivy 2.3.0
-
+#:import random random
 
 <RandomDev>:
     orientation: "vertical"
@@ -12,11 +12,13 @@
         size: self.texture_size
         size_hint_y: .2
         padding: 10, 5
+        id: banner
 
     Button:
         text: "Get New"
         pos_hint: {'center': 1}
         background_color: (1, 0, 0, 1)
+        on_press: banner.color=[random.random() for i in range(3)] + [1]
 
 
     BoxLayout:
