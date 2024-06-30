@@ -19,9 +19,14 @@
         id: banner
 
     Label:
+        id: scripture_label
         text: 'None'
         pos_hint: {'center': 1}
-
+        text_size: self.size
+        color: (0, 1, 1, 1)
+    Label:
+        id: chapter_label
+        
 
 
 
@@ -31,7 +36,9 @@
         Label:
             text: "Here is some text"
         Button:
-            text: "Another\nButton!"
+            text: "Tap to get a New Bible Verse"
+            on_press: root.get_random_scripture()
+            on_release: scripture_label.text = root.chosen_verse
             background_color: (0, .5, 1, 1)
             size: 100, 500
 

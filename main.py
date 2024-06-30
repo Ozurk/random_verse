@@ -10,6 +10,22 @@ import random
 from kivy.properties import ListProperty
 import shutil
 import os
+import re
+
+def get_file(file_path):
+    try:
+        file = open(file_path, "r")
+        text = file.read()
+        text = text.strip()
+        file.close()
+        return text
+    except UnicodeDecodeError:
+        file = open(file_path, "r", encoding="utf-8")
+        text = file.read()
+        text = text.strip()
+        file.close()
+        return text
+
 
 class RandomDev(BoxLayout):
 
@@ -19,17 +35,22 @@ class RandomDev(BoxLayout):
         self.chosen_text = None
         self.chosen_book = None
         self.chosen_chapter = None
+        self.chosen_verse = None
 
     def get_random_scripture(self):
-        number_of_books = None
-        index = 0
-        folder_path = "The Bible by Chapter"
-        def count_subfolders(thebiblebychapter):
-            try:
-                subfolders = next(os.walk(folder_path))[1]
+        list_of_books = list(os.listdir('Bible'))
+        number_of_books = len(os.listdir('Bible'))
 
-                return len(subfolders)
+        self.chosen_book = list_of_books[random.randint(0, 65)]
+        os.chdir(f'Bible/{self.chosen_book}')
+        list_of_chapters = list(os.listdir())
 
+        self.chosen_chapter = list_of_chapters[random.randint(0, len(list_of_chapters) - 1)]
+        self.chosen_text = get_file(self.chosen_chapter)
+        lines = self.chosen_text.splitlines()
+        self.chosen_verse = lines[random.randint(0, len(lines) - 1)]
+        os.chdir('../')
+        os.chdir('../')
 
 
 
