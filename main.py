@@ -48,9 +48,11 @@ class RandomDev(BoxLayout):
         self.chosen_chapter = list_of_chapters[random.randint(0, len(list_of_chapters) - 1)]
         self.chosen_text = get_file(self.chosen_chapter)
         lines = self.chosen_text.splitlines()
-        self.chosen_verse = lines[random.randint(0, len(lines) - 1)]
+        self.chosen_verse = lines[random.randint(1, len(lines) - 1)]
         os.chdir('../')
         os.chdir('../')
+        if self.chosen_text == "":
+            self.get_random_scripture()
 
 
 
