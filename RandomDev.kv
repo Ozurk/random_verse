@@ -9,37 +9,76 @@
             rgba: 1, 0, 1, 1
 
     Label:
-        text: "Random_Devotion_Time"
+        text: "Pick a Bible Verse!"
         text_size: root.width, None
         font_size: 60
+        color: .9, .9, .9, 1
         halign: 'center'
-        size: self.texture_size
         size_hint_y: .2
         padding: 10, 5
-        id: banner
+        id: top_label
+        canvas.before:
+            Color:
+                rgba: 0.2, 0.2, 0.3, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
 
     Label:
-        id: scripture_label
-        text: 'None'
+        size_hint_y: .2
+        height: root.height * .2
+        canvas.before:
+            Color:
+                rgba: 0.1, 0.1, 0.1, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        text: root.chosen_book[3:]
+        color: .9, .9, .9, 1
+        font_size: self.height * .65
+
+    Label:
+        size_hint_y: .2
+        canvas.before:
+            Color:
+                rgba: 0.1, 0.1, 0.1, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        text: root.chosen_chapter[:-4]
+        color: .9, .9, .9, 1
+        font_size: 50
+    Label:
+        size_hint_y: .8
+        canvas.before:
+            Color:
+                rgba: 0.1, 0.1, 0.11, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        text: root.chosen_verse
+        color: .9, .9, .9, 1
         pos_hint: {'center': 1}
         text_size: self.size
-        color: (0, 1, 1, 1)
-    Label:
-        id: chapter_label
-        
-
-
+        halign: 'center'
+        valign: 'top'
+        id: text
 
     BoxLayout:
-        padding: dp(30), dp(100)
+        padding: dp(10), dp(10)
         orientation: "vertical"
         Label:
-            text: "Here is some text"
+            size_hint_y: .1
+            text: root.click_counter_var
+            font_size: 50
+
+            color: .9, .9, .9, 1
+
         Button:
-            text: "Tap to get a New Bible Verse"
+            size_hint_y: .2
+            text: "Tap to get a free Bible Verse"
             on_press: root.get_random_scripture()
-            on_release: scripture_label.text = root.chosen_verse
-            background_color: (0, .5, 1, 1)
+            background_color: root.text_color
             size: 100, 500
 
 

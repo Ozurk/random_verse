@@ -7,10 +7,13 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.scatter import Scatter
 import random
+from kivy.properties import StringProperty
 from kivy.properties import ListProperty
+from kivy.graphics import Color, Rectangle
 import shutil
 import os
 import re
+
 
 def get_file(file_path):
     try:
@@ -28,18 +31,19 @@ def get_file(file_path):
 
 
 class RandomDev(BoxLayout):
-
+    chosen_text = StringProperty("")
+    chosen_book = StringProperty("")
+    chosen_chapter = StringProperty("")
+    chosen_verse = StringProperty("")
+    text_color = ListProperty([1, 1, 1, 1])
+    click_counter = 0
+    click_counter_var = StringProperty("")
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.chosen_text = None
-        self.chosen_book = None
-        self.chosen_chapter = None
-        self.chosen_verse = None
 
     def get_random_scripture(self):
         list_of_books = list(os.listdir('Bible'))
-        number_of_books = len(os.listdir('Bible'))
 
         self.chosen_book = list_of_books[random.randint(0, 65)]
         os.chdir(f'Bible/{self.chosen_book}')
@@ -48,10 +52,14 @@ class RandomDev(BoxLayout):
         self.chosen_chapter = list_of_chapters[random.randint(0, len(list_of_chapters) - 1)]
         self.chosen_text = get_file(self.chosen_chapter)
         lines = self.chosen_text.splitlines()
-        self.chosen_verse = lines[random.randint(0, len(lines) - 1)]
+        self.chosen_verse = lines[random.randint(1, len(lines) - 1)]
         os.chdir('../')
         os.chdir('../')
-
+        if self.chosen_text == "":
+            self.get_random_scripture()
+        self.text_color = [random.random() for i in range(3)] + [1]
+        self.click_counter += 1
+        self.click_counter_var = str(self.click_counter)
 
 
 class RandomDevApp(App):
