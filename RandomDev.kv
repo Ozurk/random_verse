@@ -35,7 +35,7 @@
                 pos: self.pos
         text: root.chosen_book[3:]
         color: .9, .9, .9, 1
-        font_size: self.height * .65
+        font_size: 60
 
     Label:
         size_hint_y: .2
@@ -78,7 +78,8 @@
 
         Button:
             size_hint_y: .2
-            text: "Tap to get a free Bible Verse"
+            text: "Tap to get a Bible Verse"
+            font_size: 50
             on_press: root.get_random_scripture()
             background_color: root.text_color
             size: 100, 500
